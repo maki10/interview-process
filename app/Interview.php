@@ -18,14 +18,14 @@ class Interview extends Model
     ];
 
     private $statuses = [
-    	'active',
-    	'inactive'
+        'confirmed',
+        'rejected'
     ];
 
-	public function getInterviewStatusesAttribute()
-	{
-	    return $this->statuses;
-	}
+    public function getInterviewStatusesAttribute()
+    {
+        return $this->statuses;
+    }
 
 	public function setToAttribute($value)
     {

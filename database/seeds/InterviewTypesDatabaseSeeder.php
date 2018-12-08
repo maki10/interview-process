@@ -12,7 +12,7 @@ class InterviewTypesDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        InterviewType::create(['type' => 'freshman']);
-        InterviewType::create(['type' => 'transfer']);
+        InterviewType::create(['name' => 'freshman']);
+        InterviewType::create(['name' => 'transfer']);
     }
 }
