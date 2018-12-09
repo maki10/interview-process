@@ -14,7 +14,6 @@ class InterviewPolicy
      * Determine whether the user can view the interview.
      *
      * @param  \App\User  $user
-     * @param  \App\Interview  $interview
      * @return mixed
      */
     public function view(User $user)
@@ -37,10 +36,9 @@ class InterviewPolicy
      * Determine whether the user can update the interview.
      *
      * @param  \App\User  $user
-     * @param  \App\Interview  $interview
      * @return mixed
      */
-    public function update(User $user, Interview $interview)
+    public function update(User $user)
     {
         return in_array($user->type->role, ['administrator', 'student', 'staff']);
     }
@@ -49,10 +47,9 @@ class InterviewPolicy
      * Determine whether the user can delete the interview.
      *
      * @param  \App\User  $user
-     * @param  \App\Interview  $interview
      * @return mixed
      */
-    public function delete(User $user, Interview $interview)
+    public function delete(User $user)
     {
         return in_array($user->type->role, ['administrator', 'staff']);
     }

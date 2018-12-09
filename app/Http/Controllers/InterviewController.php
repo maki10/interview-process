@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Interview;
 use Illuminate\Http\Request;
+use MaddHatter\LaravelFullcalendar\Calendar;
 
 class InterviewController extends Controller
 {
@@ -14,7 +15,28 @@ class InterviewController extends Controller
      */
     public function index()
     {
-        //
+        $events = [];
+        $nterviews = Interview::get();
+
+        if ($nterviews->count()) {
+            foreach ($nterviews as $key => $nterview) {
+                $events[] = Calendar::event(
+                    $nterview->name,
+                    true,
+                    new \DateTime($nterview->from),
+                    new \DateTime($nterview->to),
+                    null,
+                    [
+                        'color' => '#ff0000',
+                        'url' => route('interviews.edit', ['interview' => $nterview->id]),
+                    ]
+                );
+            }
+        }
+
+        $calendar = \Calendar::addEvents($events);
+
+        return view('interviews.index', compact('calendar'));
     }
 
     /**

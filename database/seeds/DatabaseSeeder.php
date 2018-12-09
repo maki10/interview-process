@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(OfficeDatabaseSeeder::class);
         $this->call(WorkingHourDatabaseSeeder::class);
         $this->call(AdminSeeder::class);
+        $this->call(InterviewDatabaseSeeder::class);
     }
 }

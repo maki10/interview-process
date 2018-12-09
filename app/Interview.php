@@ -22,6 +22,11 @@ class Interview extends Model
         'rejected'
     ];
 
+    protected $dates = [
+        'from',
+        'to',
+    ];
+
     public function getInterviewStatusesAttribute()
     {
         return $this->statuses;
@@ -32,9 +37,9 @@ class Interview extends Model
         $this->attributes['to'] = strtotime($value);
     }
 
-	public function getToAttribute($value)
+	public function getToAttribute()
     {
-        return $this->to->format('H:i');
+        return \Carbon\Carbon::createFromTimestamp($this->attributes['to']);
     }
 
 	public function setFromAttribute($value)
@@ -42,9 +47,9 @@ class Interview extends Model
         $this->attributes['from'] = strtotime($value);
     }
 
-	public function getFromAttribute($value)
+	public function getFromAttribute()
     {
-        return $this->from->format('H:i');
+        return \Carbon\Carbon::createFromTimestamp($this->attributes['from']);
     }
 
     public function office()
