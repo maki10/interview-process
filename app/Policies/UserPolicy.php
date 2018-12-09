@@ -13,12 +13,11 @@ class UserPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\User  $user
-     * @param  \App\User  $model
      * @return mixed
      */
-    public function view(User $user, User $model)
+    public function view(User $user)
     {
-        return in_array($user->type->role, ['administrator', 'student', 'staff']);
+        return in_array($user->type->role, ['administrator']);
     }
 
     /**
@@ -52,6 +51,31 @@ class UserPolicy
      * @return mixed
      */
     public function delete(User $user, User $model)
+    {
+        return in_array($user->type->role, ['administrator']);
+    }
+    
+
+    /**
+     * Determine whether the user can restore the office.
+     *
+     * @param  \App\User  $user
+     * @param  \App\User  $model
+     * @return mixed
+     */
+    public function restore(User $user, User $model)
+    {
+        return in_array($user->type->role, ['administrator']);
+    }
+
+    /**
+     * Determine whether the user can permanently delete the office.
+     *
+     * @param  \App\User  $user
+     * @param  \App\User  $model
+     * @return mixed
+     */
+    public function forceDelete(User $user, User $model)
     {
         return in_array($user->type->role, ['administrator']);
     }

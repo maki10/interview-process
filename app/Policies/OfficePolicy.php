@@ -3,18 +3,18 @@
 namespace App\Policies;
 
 use App\User;
-use App\WorkingHour;
+use App\Office;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class WorkingHourPolicy
+class OfficePolicy
 {
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view the working h our.
+     * Determine whether the user can view the office.
      *
      * @param  \App\User  $user
-     * @param  \App\WorkingHour  $workingHour
+     * @param  \App\Office  $office
      * @return mixed
      */
     public function view(User $user)
@@ -23,7 +23,7 @@ class WorkingHourPolicy
     }
 
     /**
-     * Determine whether the user can create working h ours.
+     * Determine whether the user can create offices.
      *
      * @param  \App\User  $user
      * @return mixed
@@ -34,25 +34,25 @@ class WorkingHourPolicy
     }
 
     /**
-     * Determine whether the user can update the working h our.
+     * Determine whether the user can update the office.
      *
      * @param  \App\User  $user
-     * @param  \App\WorkingHour  $workingHour
+     * @param  \App\Office  $office
      * @return mixed
      */
-    public function update(User $user, WorkingHour $workingHour)
+    public function update(User $user, Office $office)
     {
         return in_array($user->type->role, ['administrator']);
     }
 
     /**
-     * Determine whether the user can delete the working h our.
+     * Determine whether the user can delete the office.
      *
      * @param  \App\User  $user
-     * @param  \App\WorkingHour  $workingHour
+     * @param  \App\Office  $office
      * @return mixed
      */
-    public function delete(User $user, WorkingHour $workingHour)
+    public function delete(User $user, Office $office)
     {
         return in_array($user->type->role, ['administrator']);
     }

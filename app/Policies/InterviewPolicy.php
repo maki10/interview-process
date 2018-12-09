@@ -17,7 +17,7 @@ class InterviewPolicy
      * @param  \App\Interview  $interview
      * @return mixed
      */
-    public function view(User $user, Interview $interview)
+    public function view(User $user)
     {
         return in_array($user->type->role, ['administrator', 'student', 'staff']);
     }

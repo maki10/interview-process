@@ -33,7 +33,26 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @can('view', App\User::class)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('users.index') }}">{{ __('Users') }}</a>
+                            </li>
+                        @endcan
+                        @can('view', App\Interview::class)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('interviews.index') }}">{{ __('Interviews') }}</a>
+                            </li>
+                        @endcan
+                        @can('view', App\InterviewType::class)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('interview_types.index') }}">{{ __('Interview Types') }}</a>
+                            </li>
+                        @endcan
+                        @can('view', App\Office::class)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('offices.index') }}">{{ __('Offices') }}</a>
+                            </li>
+                        @endcan
                     </ul>
 
                     <!-- Right Side Of Navbar -->
