@@ -35,10 +35,9 @@ class UserPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\User  $user
-     * @param  \App\User  $model
      * @return mixed
      */
-    public function update(User $user, User $model)
+    public function update(User $user)
     {
         return in_array($user->type->role, ['administrator']);
     }
@@ -47,10 +46,9 @@ class UserPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\User  $model
      * @return mixed
      */
-    public function delete(User $user, User $model)
+    public function destroy(User $user)
     {
         return in_array($user->type->role, ['administrator']);
     }
@@ -60,10 +58,9 @@ class UserPolicy
      * Determine whether the user can restore the office.
      *
      * @param  \App\User  $user
-     * @param  \App\User  $model
      * @return mixed
      */
-    public function restore(User $user, User $model)
+    public function restore(User $user)
     {
         return in_array($user->type->role, ['administrator']);
     }
@@ -72,10 +69,9 @@ class UserPolicy
      * Determine whether the user can permanently delete the office.
      *
      * @param  \App\User  $user
-     * @param  \App\User  $model
      * @return mixed
      */
-    public function forceDelete(User $user, User $model)
+    public function forceDelete(User $user)
     {
         return in_array($user->type->role, ['administrator']);
     }
